@@ -9,9 +9,15 @@ function App() {
 
   const [users,setUsers]=useState([])
 
+  const userHandler=(name,age)=>{
+    setUsers((prevState)=>{
+      return [...prevState,{username:name,age:age}]
+    })
+  }
+
   return (
     <div>
-     <AddUser setUsers={setUsers}></AddUser>
+     <AddUser onAddUsers={userHandler}></AddUser>
      <UsersList users={users}></UsersList>
     </div>
   );

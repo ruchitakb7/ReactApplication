@@ -4,7 +4,7 @@ import Card from "../UI/Card";
 import Button from "../UI/Button";
 import "./AddUser.css";
 
-const AddUser = ({setUsers}) => {
+const AddUser = (props) => {
   const [enteredUsername, setEnteredUsername] = useState("");
   const [enteredAge, setEnteredAge] = useState("");
 
@@ -18,13 +18,8 @@ const AddUser = ({setUsers}) => {
     {
         console.log(enteredUsername,enteredAge)
 
-        const obj={
-          username:enteredUsername,
-          age:enteredAge
-        }
-        setUsers((prevUsers)=>{
-          return [...prevUsers,obj]
-        })
+        
+        props.onAddUsers(enteredUsername,enteredAge)
         
     }
     
