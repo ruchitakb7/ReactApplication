@@ -4,20 +4,33 @@ import Card from "../UI/Card";
 import Button from "../UI/Button";
 import "./AddUser.css";
 
-const AddUser = () => {
+const AddUser = ({setUsers}) => {
   const [enteredUsername, setEnteredUsername] = useState("");
   const [enteredAge, setEnteredAge] = useState("");
 
+  
+
   const addUserHandler = (event) => {
+
     event.preventDefault();
+
    if(enteredUsername.trim().length>0 && (enteredAge.trim().length>0 && (Number(enteredAge)>0)))
     {
         console.log(enteredUsername,enteredAge)
+
+        const obj={
+          username:enteredUsername,
+          age:enteredAge
+        }
+        setUsers((prevUsers)=>{
+          return [...prevUsers,obj]
+        })
+        
     }
     
     setEnteredUsername("");
     setEnteredAge("");
-  };
+  };                                
 
   const usernameChangeHandler = (event) => {
     setEnteredUsername(event.target.value);
